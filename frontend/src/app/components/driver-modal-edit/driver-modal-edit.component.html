@@ -1,0 +1,55 @@
+<button class="button" (click)="modalActive()">Edit Driver</button>
+
+<form  [formGroup]="formGroup" (ngSubmit)="editDriver()">
+<div [ngClass]="{ 'modal': true, 'is-active':!classModal }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Driver vehicle</p>
+        <button class="delete" type="button" aria-label="close" (click)="modalActive()"></button>
+      </header>
+      <section class="modal-card-body">
+
+          <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" formControlName="name" placeholder="Text input">
+              </div>
+          </div>
+          
+          <div class="field">
+              <label class="label">Surname</label>
+              <div class="control">
+                <input class="input" type="text" formControlName="surname" placeholder="Text input">
+              </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Date start</label>
+                <div class="control">
+                  <input class="input" type="text" formControlName="dateStart" placeholder="Text input">
+                </div>
+              </div>
+
+            
+            
+          
+      
+      
+      </section>
+      <footer class="modal-card-foot">
+        <div class="buttons">
+          <button class="button is-success" type="submit" (click)="modalActive()" [disabled]="formGroup.invalid">Add Driver</button>
+          <button class="button" type="button" (click)="modalActive()">Cancel</button>
+        </div>
+      </footer>
+      
+    </div>
+  
+</div>
+</form>
+
+
+
+
+

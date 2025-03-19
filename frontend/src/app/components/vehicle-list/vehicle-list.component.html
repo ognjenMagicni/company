@@ -1,0 +1,67 @@
+<div style="width:500px;height:auto;" class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img (click)="driverVehicleClick('vehicle',v.idVehicle)" style="width:400px;height:auto"
+          src="car.jpg"
+          alt="Placeholder image"
+        />
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p (click)="driverVehicleClick('vehicle',v.idVehicle)" class="title is-4">Registration: {{v.idVehicle}}</p>
+        </div>
+      </div>
+  
+      <div *ngIf="type=='vehicles'">
+        <div class="content">
+            <p>Year: {{v.year}}<br>Km: {{v.km}}<br>Boot: {{v.boot}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="type=='small'">
+        <div class="content">
+            <p>Small Service Last Time Did    : {{v.dateSmallServiceLast| date:'dd/MM/yyyy'}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="type=='big'">
+        <div class="content"> 
+            <p>Big Service Last Time Did: {{v.dateBigServiceLast| date:'dd/MM/yyyy'}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="type=='year'">
+        <div class="content"> 
+            <p>Year: {{v.year}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="type=='km'">
+        <div class="content"> 
+            <p>Km: {{v.km}}</p>
+        </div>
+      </div>
+
+
+      <div *ngIf="type=='vehicles' && v.fkDriver!=null">
+        <div class="media">
+            <div class="media-left">
+            <figure class="image is-48x48">
+                <img (click)="driverVehicleClick('driver',v.fkDriver.idDriver)"
+                src="user.png"
+                alt="Placeholder image"
+                />
+            </figure>
+            </div>
+            <div class="media-content">
+            <p (click)="driverVehicleClick('driver',v.fkDriver.idDriver)" class="title is-4">{{v.fkDriver.name}} {{v.fkDriver.surname}}</p>
+            </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>

@@ -1,0 +1,37 @@
+<div class="box mt-5">
+    <table class="table is-fullwidth is-striped is-hoverable is-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>aAddress start</th>
+                <th>Addres final</th>
+                <th>Price</th>
+                <th>Stage</th>
+                <th *ngIf="type=='delivered'">Rate</th>
+                <th>Commented?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(package of packages; track package.idPackage){
+                <tr>
+                    <td>{{package.idPackage}}</td>
+                    <td>{{package.title}}</td>
+                    <td>{{package.addressStart}}, {{package.cityStart}} </td>
+                    <td>{{package.addressEnd}}, {{package.cityEnd}} </td>
+                    <td>{{package.price}}€</td>
+                    <td>{{type}}</td>
+                    <td *ngIf="type=='delivered'">
+                        <app-package-grade 
+                            [idPackage]="package.idPackage"
+                        ></app-package-grade>
+                    </td>
+                    <td *ngIf="package.grade">Yes</td>
+                    <td *ngIf="!package.grade">No</td>
+                </tr>
+            }
+            
+            
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,184 @@
+<div class="container mb-6">
+  <div *ngIf="type=='vehicles'">
+        <app-vehicle-modal></app-vehicle-modal>
+        <div class="grid is-col-min-15">
+        @for(v of vehicles;track v.idVehicle){    
+          <app-vehicle-list [type]="type" [v]="v"></app-vehicle-list>
+        }
+        </div>
+    </div>
+
+
+  <div *ngIf="type=='small'">
+      <div class="grid is-col-min-15">
+      @for(v of vehicleSmall;track v.idVehicle){    
+        <app-vehicle-list [type]="type" [v]="v"></app-vehicle-list>
+      }
+      </div>
+  </div>
+
+  <div *ngIf="type=='big'">
+    <div class="grid is-col-min-15">
+    @for(v of vehicleBig;track v.idVehicle){    
+      <app-vehicle-list [type]="type" [v]="v"></app-vehicle-list>
+    }
+    </div>
+</div>
+
+<div *ngIf="type=='year'">
+  <div class="grid is-col-min-15">
+  @for(v of vehicleYear;track v.idVehicle){    
+    <app-vehicle-list [type]="type" [v]="v"></app-vehicle-list>
+  }
+  </div>
+</div>
+
+<div *ngIf="type=='km'">
+  <div class="grid is-col-min-15">
+  @for(v of vehicleKm;track v.idVehicle){    
+    <app-vehicle-list [type]="type" [v]="v"></app-vehicle-list>
+  }
+  </div>
+</div>
+
+<div *ngIf="type=='unused'">
+  <div class="grid is-col-min-15">
+  @for(v of vehicleUnused;track v.idVehicle){    
+    <app-vehicle-list [type]="type" [v]="v"></app-vehicle-list>
+  }
+  </div>
+</div>
+
+
+  
+
+
+    <div *ngIf="type=='drivers'">
+        <app-driver-modal-add></app-driver-modal-add>
+        <div class="grid is-col-min-15">
+        @for(d of drivers;track d.idDriver){
+            <div style="width:500px;height:auto;" class="card">
+                
+            
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img (click)="changeType('driver',d.idDriver)"
+                            src="user.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                      <p (click)="changeType('driver',d.idDriver)" class="title is-4">{{d.name}} {{d.surname}}</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                    <p (click)="changeType('vehicle',d.fkVehicle)">Vehicle: {{d.fkVehicle}}</p>
+                  </div>
+
+                
+
+                </div>
+              </div>
+        }
+        </div>
+    </div>
+
+    <div *ngIf="type=='driver'" class="card">
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img
+                            src="user.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                    <div class="media-content">
+                      <p class="title is-4">{{driver.name}} {{driver.surname}}</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                    <p (click)="changeType('vehicle',driver.fkVehicle)">Vehicle: {{driver.fkVehicle}}</p>
+                  </div>
+
+                  <app-comment [idDriver]="driver.idDriver"></app-comment>
+
+                
+
+                </div>
+                <div class="p-4">
+                  <button class="button is-danger" (click)="deleteDriver(driver.idDriver)">Delete</button>
+                  <app-driver-modal-edit></app-driver-modal-edit>
+                </div>
+              
+    </div>
+
+    <div *ngIf="type=='vehicle'" class="card">
+        
+            
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+                <figure>
+                  <img
+                    src="car.jpg"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+            <div class="media-content">
+              <p class="title is-4">Registration: {{vehicle.idVehicle}}</p>
+              <p>
+                Boot: {{vehicle.boot}}<br>
+                Year: {{vehicle.year}}<br>
+                Km: {{vehicle.km}}<br>
+                Registration deadline: {{vehicle.registrationEnd | date:'dd/MM/yyyy' }}<br>
+                Small service: {{vehicle.dateSmallServiceLast | date:'dd/MM/yyyy'}}<br>
+                Big service: {{vehicle.dateBigServiceLast | date:'dd/MM/yyyy'}}<br>
+
+              </p>
+
+            <div *ngIf="vehicle.fkDriver">
+              <div class="media">
+                <div class="media-left">
+                <figure class="image is-48x48">
+                    <img (click)="changeType('driver',vehicle.fkDriver?.idDriver)"
+                    src="user.png"
+                    alt="Placeholder image"
+                    />
+                </figure>
+                </div>
+                <div class="media-content">
+                <p (click)="changeType('driver',vehicle.fkDriver?.idDriver)" class="title is-4">{{vehicle.fkDriver?.name}} {{vehicle.fkDriver?.surname}}</p>
+              </div>
+              
+              </div>
+               <button class="button" (click)="removeDriver(vehicle.idVehicle,vehicle.fkDriver?.idDriver)">Remove driver</button>
+            </div>
+            <div *ngIf="!vehicle.fkDriver" class="media">
+              <app-driver-vehicle [idVehicle]="vehicle.idVehicle"></app-driver-vehicle>
+              
+
+            </div>
+          </div>
+      
+          
+            
+
+        
+
+        </div>
+        <div>
+          <button (click)="deleteVehicle(vehicle.idVehicle)" class="button is-danger">Delete</button>
+          <app-vehicle-modal [vehicle]="vehicle"></app-vehicle-modal>
+        </div>
+      
+</div>
+
+</div>

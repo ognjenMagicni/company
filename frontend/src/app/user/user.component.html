@@ -1,0 +1,36 @@
+<app-user-card 
+    [name]="user.name"
+    [surname]="user.surname"
+    [username]="user.idUser"
+    pathPicture="user.png"
+    [role]="1"
+    ></app-user-card>
+
+<div class="block mt-6">
+    <div class="container">
+        <div class="buttons has-addons is-centered">
+            <button [ngClass] = "{'button is-large':true,'is-active':waiting}" (click)="waitingClick()">Waiting packages</button>
+            <button [ngClass] = "{'button is-large':true,'is-active':accepted}" (click)="acceptedClick()">Accepted packages</button>
+            <button [ngClass] = "{'button is-large':true,'is-active':delivered}" (click)="deliveredClick()">Delivered packages</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div *ngIf = 'waiting'>
+        <app-table 
+                [username]="id"
+                type="waiting"></app-table>
+    </div>
+    <div *ngIf = 'accepted'>
+        <app-table 
+                [username]="id"
+                type="accepted"></app-table>
+    </div>
+    <div *ngIf = 'delivered'>
+        <app-table 
+                [username]="id"
+                type="delivered"></app-table>
+    </div>
+</div>
+

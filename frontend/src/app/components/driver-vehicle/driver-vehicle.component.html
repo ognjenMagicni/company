@@ -1,0 +1,23 @@
+<button class="button" (click)="changeDriverList()">Assign a driver</button>
+<div *ngIf="driverListBool" class="box mt-5">
+    <table class="table is-fullwidth is-striped is-hoverable is-bordered">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Who</th>
+                <th>Assign</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(driver of drivers; track driver.idDriver){
+                <tr>
+                    <td>{{driver.idDriver}}</td>
+                    <td>{{driver.name}} {{driver.surname}}</td>
+                    <td><button class="button" (click)="insertDriverVehicle(driver.idDriver)">Assign</button></td>
+                </tr>
+            }
+            
+            
+        </tbody>
+    </table>
+</div>

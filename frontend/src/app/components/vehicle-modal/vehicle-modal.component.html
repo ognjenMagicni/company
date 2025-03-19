@@ -1,0 +1,109 @@
+
+
+
+<button *ngIf="vehicle!=undefined"  class="button" (click)="modalActive()">Edit Vehicle</button>
+<button *ngIf="vehicle==undefined" class="button" (click)="modalActive()">Add Vehicle</button>
+
+<form  [formGroup]="formGroup" (ngSubmit)="vehicle ? editVehicle() : addVehicle()">
+<div [ngClass]="{ 'modal': true, 'is-active':!classModal }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p *ngIf="vehicle==undefined" class="modal-card-title">Add vehicle</p>
+        <p *ngIf="vehicle!=undefined" class="modal-card-title">Edit vehicle</p>
+        <button class="delete" type="button" aria-label="close" (click)="modalActive()"></button>
+      </header>
+      <section class="modal-card-body">
+
+          <div class="field">
+              <label class="label">Registration</label>
+              <div class="control">
+                <input *ngIf="vehicle==undefined" class="input" type="text" formControlName="idVehicle" placeholder="Text input">
+                <input *ngIf="vehicle!=undefined"  class="input" type="text" formControlName="idVehicle" placeholder="Text input">
+              </div>
+          </div>
+          
+          <div class="field">
+              <label class="label">Boot</label>
+              <div class="control">
+                <input *ngIf="vehicle==undefined" class="input" type="number" formControlName="boot" placeholder="Text input">
+                <input *ngIf="vehicle!=undefined"  class="input" type="number" formControlName="boot" placeholder="Text input">
+              </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Year</label>
+                <div class="control">
+                  <input *ngIf="vehicle==undefined" class="input" type="number" formControlName="year" placeholder="Text input">
+                  <input *ngIf="vehicle!=undefined" class="input" type="number" formControlName="year" placeholder="Text input">
+                </div>
+              </div>
+
+            <div class="field">
+              <label class="label">Km</label>
+              <div class="control">
+                <input *ngIf="vehicle==undefined" class="input" type="number" formControlName="km" placeholder="Text input">
+                <input *ngIf="vehicle!=undefined" class="input" type="number" formControlName="km" placeholder="Text input">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Registration start</label>
+              <div class="control">
+                <input *ngIf="vehicle==undefined" class="input" type="date" formControlName="registrationStart" placeholder="Text input">
+                <input *ngIf="vehicle!=undefined" class="input" type="date" formControlName="registrationStart" placeholder="Text input">
+              </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Registration end</label>
+                <div class="control">
+                  <input *ngIf="vehicle==undefined" class="input" type="date" formControlName="registrationEnd" placeholder="Text input">
+                  <input *ngIf="vehicle!=undefined" class="input" type="date" formControlName="registrationEnd" placeholder="Text input">
+                </div>
+              </div>
+
+            <div class="field">
+              <label class="label">Small service</label>
+              <div class="control">
+                <input *ngIf="vehicle==undefined" class="input" type="date" formControlName="dateSmallServiceLast" placeholder="Text input">
+                <input *ngIf="vehicle!=undefined" class="input" type="date" formControlName="dateSmallServiceLast" placeholder="Text input">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Big service</label>
+              <div class="control">
+                <input *ngIf="vehicle==undefined" class="input" type="date" formControlName="dateBigServiceLast" placeholder="Text input">
+                <input *ngIf="vehicle!=undefined" class="input" type="date" formControlName="dateBigServiceLast" placeholder="Text input">
+              </div>
+            </div>
+
+          
+          
+            
+          
+          
+          
+          
+          
+      
+      
+      </section>
+      <footer class="modal-card-foot">
+        <div class="buttons">
+          <button *ngIf="vehicle==undefined" class="button is-success" type="submit" (click)="modalActive()" [disabled]="formGroup.invalid">Add vehicle</button>
+          <button *ngIf="vehicle!=undefined" class="button is-success" type="submit" (click)="modalActive()" [disabled]="formGroup.invalid">Edit vehicle</button>
+          <button class="button" type="button" (click)="modalActive()">Cancel</button>
+        </div>
+      </footer>
+      
+    </div>
+  
+</div>
+</form>
+
+
+
+
+

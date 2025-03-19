@@ -1,0 +1,62 @@
+
+
+
+
+<button class="button is-primary" (click)="modalActive()">Rate</button>
+
+<form [formGroup]="formGroup" (ngSubmit)="updatePackage()">
+<div [ngClass]="{ 'modal': true, 'is-active':!classModal }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Rate package</p>
+        <button class="delete" type="button" aria-label="close" (click)="modalActive()"></button>
+      </header>
+      <section class="modal-card-body">
+
+
+        <div class="container">
+          
+          <div class="field">
+            <label class="label">Title</label>
+            <p>{{idPackage}}</p>
+          </div>
+        
+
+          <div class="field">
+              <label class="label">Grade</label>
+              <div class="control">
+                <input class="input" type="number" formControlName="grade" placeholder="Text input">
+              </div>
+          </div>
+          
+          <div class="field">
+              <label class="label">Comment</label>
+              <div class="control">
+                <input class="input" type="textarea" formControlName="comment" placeholder="Text input">
+              </div>
+            </div>
+          
+            
+          
+          
+          
+          
+          </div>
+      
+      
+      </section>
+      <footer class="modal-card-foot">
+        <div class="buttons">
+          <button class="button is-success" type="submit" (click)="modalActive()" [disabled]="formGroup.invalid">Rate delivery</button>
+          
+          <button class="button" type="button" (click)="modalActive()">Cancel</button>
+        </div>
+      </footer>
+      
+    </div>
+  </div>
+
+
+
+

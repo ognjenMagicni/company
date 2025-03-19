@@ -1,0 +1,31 @@
+
+<div class="container p-6">
+  <div class="card p-6">
+    
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure>
+            <img
+              [src]="pathPicture"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+        <div class="media-content" style="height:100%;display:flex; flex-direction: column; justify-content: space-around;">
+          <div>
+            <p class="has-text-centered title is-4">{{name}} {{surname}}</p>
+            <p class="has-text-centered subtitle is-6">{{username}}</p>
+          </div>
+          <div style="display:flex;justify-content: center;align-items: center;">
+            <app-package-form *ngIf="role==1" [username]="username"></app-package-form> 
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    
+    
+    
+  </div>
+</div>

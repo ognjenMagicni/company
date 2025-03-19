@@ -1,0 +1,39 @@
+<div class="box mt-5">
+    <table class="table is-fullwidth is-striped is-hoverable is-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>address start</th>
+                <th>addres final</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th *ngIf="type==='waiting'">Accept</th>
+                <th *ngIf="type==='accepted'">Delivered</th>
+                <th *ngIf="type==='delivered'">Commented?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(package of packages; track package.idPackage){
+                <tr>
+                    <td>{{package.idPackage}}</td>
+                    <td>{{package.title}}</td>
+                    <td>{{package.addressStart}}, {{package.cityStart}} </td>
+                    <td>{{package.addressEnd}}, {{package.cityEnd}} </td>
+                    <td>{{package.weight}}</td>
+                    <td>{{package.height}}</td>
+                    <td>{{package.width}}</td>
+                    <td>{{package.length}}</td>
+                    <td *ngIf="type==='waiting'" ><button class="button is-info" (click)="acceptPackage(package.idPackage)">Accept</button></td>
+                    <td *ngIf="type==='accepted'" ><button class="button is-info" (click)="deliverPackage(package.idPackage)">Delivered</button></td>
+                    <td *ngIf="type==='delivered' && package.grade" >Yes</td>
+                    <td *ngIf="type==='delivered' && !package.grade" >No</td>
+                </tr>
+            }
+            
+            
+        </tbody>
+    </table>
+</div>

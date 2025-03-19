@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: transport
+  datasource:
+    url: jdbc:mysql://localhost:3306/transport
+    username: root
+    password: simple
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

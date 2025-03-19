@@ -1,0 +1,88 @@
+
+
+
+ 
+<button class="button" (click)="modalActive()">Add package</button>
+
+<form [formGroup]="formGroup" (ngSubmit)="insertPackage()">
+<div [ngClass]="{ 'modal': true, 'is-active':!classModal }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Add package</p>
+        <button class="delete" type="button" aria-label="close" (click)="modalActive()"></button>
+      </header>
+      <section class="modal-card-body">
+
+
+        <div class="container">
+          
+          <div class="field">
+              <label class="label">Title</label>
+              <div class="control">
+                <input class="input" type="text" formControlName="title" placeholder="Text input">
+              </div>
+          </div>
+          
+          <div class="field">
+              <label class="label">Weight</label>
+              <div class="control">
+                <input class="input" type="number" formControlName="weight" placeholder="Text input">
+              </div>
+            </div>
+          
+            <div class="field">
+              <label class="label">Height</label>
+              <div class="control">
+                <input class="input" type="number" formControlName="height" placeholder="Text input">
+              </div>
+            </div>
+          
+            <div class="field">
+              <label class="label">Width</label>
+              <div class="control">
+                <input class="input" type="number" formControlName="width" placeholder="Text input">
+              </div>
+            </div>
+          
+            <div class="field">
+              <label class="label">Length</label>
+              <div class="control">
+                <input class="input" type="number" formControlName="length" placeholder="Text input">
+              </div>
+            </div>
+          
+            <div class="field">
+              <label class="label">City Address Start</label>
+              <div class="control">
+                <input class="input" type="text" formControlName="addressStart" placeholder="Text input">
+              </div>
+            </div>
+          
+            <div class="field">
+              <label class="label">City Address End</label>
+              <div class="control">
+                <input class="input" type="text" formControlName="addressEnd" placeholder="Text input">
+              </div>
+            </div>
+          
+          
+          
+          
+          </div>
+      
+      
+      </section>
+      <footer class="modal-card-foot">
+        <div class="buttons">
+          <button class="button is-success" type="submit" (click)="modalActive()" [disabled]="formGroup.invalid">Insert package</button>
+          
+          <button class="button" type="button" (click)="modalActive()">Cancel</button>
+        </div>
+      </footer>
+      
+    </div>
+  </div>
+
+
+

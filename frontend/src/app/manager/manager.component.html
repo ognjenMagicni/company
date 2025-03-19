@@ -1,0 +1,29 @@
+    <div class="tabs is-centered">
+        <ul>
+          <li (click)="changeType('vehicles')"><a>Vehicles</a></li>
+          <li (click)="changeType('small')"><a>Small Service</a></li>
+          <li (click)="changeType('big')"><a>Big Service</a></li>
+          <li (click)="changeType('year')"><a>Year</a></li>
+          <li (click)="changeType('km')"><a>Km</a></li>
+          <li (click)="changeType('unused')"><a>Unused</a></li>
+        </ul>
+      </div>
+      <div class="tabs is-centered">
+        <ul>
+          <li (click)="changeType('drivers')"><a>Drivers</a></li>
+        </ul>
+      </div>
+
+
+<app-vehicles
+    [type]="type">
+</app-vehicles>
+
+<app-user-card 
+    [name]="manager.name"
+    [surname]="manager.surname"
+    [username]="manager.idManager"
+    pathPicture="user.png"
+    [role]="3"
+    ></app-user-card>
+

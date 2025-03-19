@@ -1,0 +1,40 @@
+    <div class="block mt-6">
+        <div class="container">
+            <!-- Buttons Row -->
+            <div class="buttons has-addons is-centered">
+                <button [ngClass] = "{'button is-large':true,'is-active':waiting}" (click)="waitingClick()">Waiting packages</button>
+                
+                <button [ngClass] = "{'button is-large':true,'is-active':accepted}" (click)="acceptedClick()">Accepted packages</button>
+                
+                    <button [ngClass] = "{'button is-large':true,'is-active':delivered}" (click)="deliveredClick()">Delivered packages</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div *ngIf = 'waiting'>
+            <app-table-driver 
+                    [username]="id"
+                    type="waiting"></app-table-driver>
+        </div>
+        <div *ngIf = 'accepted'>
+            <app-table-driver 
+                    [username]="id"
+                    type="accepted"></app-table-driver>
+        </div>
+        <div *ngIf = 'delivered'>
+            <app-table-driver 
+                    [username]="id"
+                    type="delivered"></app-table-driver>
+        </div>
+    </div>
+    
+
+    <app-user-card 
+    [name]="driver.name"
+    [surname]="driver.surname"
+    [username]="driver.idDriver"
+    pathPicture="user.png"
+    [role]="2"
+    ></app-user-card>
